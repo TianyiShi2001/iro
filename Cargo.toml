@@ -1,0 +1,16 @@
+[package]
+name = "iro"
+version = "0.1.0"
+authors = ["Tianyi Shi <ShiTianyi2001@outlook.com>"]
+edition = "2018"
+description = "Conversion between color spaces."
+license = "MIT"
+repository = "https://github.com/TianyiShi2001/iro"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+min-max = {path = "/Users/tianyishi/Documents/GitHub/min-max"}
+
+[dev-dependencies]
+test-case = "1.0"
