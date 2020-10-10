@@ -6,6 +6,7 @@ fn main() {
     let color: Cmyk = color.into();
     println!("{:?}", &color);
     let color: CmykInt = color.into();
+    println!("{:?}", (color.c, color.m, color.y, color.k));
     println!("{:?}", &color);
     let color = Hsl::from(Rgb::from(color));
     println!("{:?}", &color);
