@@ -6,6 +6,7 @@ edition = "2018"
 description = "Conversion between color spaces."
 license = "MIT"
 repository = "https://github.com/TianyiShi2001/iro"
+tags = ["color", "image", "graphics"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
