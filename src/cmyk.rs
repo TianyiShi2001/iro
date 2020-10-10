@@ -12,6 +12,12 @@ pub struct Cmyk {
     pub k: f32,
 }
 
+impl Cmyk {
+    fn new(c: f32, m: f32, y: f32, k: f32) -> Self {
+        Self { c, m, y, k }
+    }
+}
+
 impl From<RgbScaled> for Cmyk {
     fn from(rgb: RgbScaled) -> Self {
         let mut c = 1.0 - rgb.r;
@@ -31,12 +37,21 @@ impl From<Rgb> for Cmyk {
     }
 }
 
+/// Integer representation of CMYK color space.
+///
+/// Each of `c`, `m`, `y` and `k` is an `u8` between 0 and 255 inclusive.
 #[derive(Debug, PartialEq)]
 pub struct CmykInt {
     pub c: u8,
     pub m: u8,
     pub y: u8,
     pub k: u8,
+}
+
+impl CmykInt {
+    fn new(c: u8, m: u8, y: u8, k: u8) -> Self {
+        Self { c, m, y, k }
+    }
 }
 
 impl From<Cmyk> for CmykInt {
@@ -46,6 +61,17 @@ impl From<Cmyk> for CmykInt {
             m: (cmyk.m * 100.0).round() as u8,
             y: (cmyk.y * 100.0).round() as u8,
             k: (cmyk.k * 100.0).round() as u8,
+        }
+    }
+}
+
+impl From<CmykInt> for Cmyk {
+    fn from(cmyk: CmykInt) -> Cmyk {
+        Self {
+            c: cmyk.c as f32 / 100.,
+            m: cmyk.m as f32 / 100.,
+            y: cmyk.y as f32 / 100.,
+            k: cmyk.k as f32 / 100.,
         }
     }
 }

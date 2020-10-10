@@ -17,6 +17,9 @@ pub struct Hsl {
     pub l: f32,
 }
 
+/// Integer representation of CMYK color space.
+///
+/// `h` is a `16` between 0 and 360, and `s` and `l` are a `u8` between 0 and 255.
 #[derive(Debug, PartialEq)]
 pub struct HslInt {
     pub h: u16,
@@ -30,6 +33,16 @@ impl From<Hsl> for HslInt {
             h: hsl.h.round() as u16,
             s: (hsl.s * 100.0).round() as u8,
             l: (hsl.l * 100.0).round() as u8,
+        }
+    }
+}
+
+impl From<HslInt> for Hsl {
+    fn from(hsl: HslInt) -> Self {
+        Self {
+            h: hsl.h as f32,
+            s: hsl.s as f32 / 100.,
+            l: hsl.l as f32 / 100.,
         }
     }
 }
